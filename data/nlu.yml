@@ -1,91 +1,141 @@
 version: "3.1"
 
 nlu:
-- intent: greet
-  examples: |
-    - hey
-    - hello
-    - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
+  - lookup: dia_semana
+    examples: |
+      - segunda
+      - terça
+      - quarta
+      - quinta
+      - sexta
+      - segunda-feira
+      - terça-feira
+      - quarta-feira
+      - quinta-feira
+      - sexta-feira
+  - lookup: periodo_agendamento
+    examples: |
+      - manhã
+      - tarde
+  - regex: data_hora
+    examples: |
+      - \d{2}/\d{2}
+      - \d{2}/\{2}/\{2,4}
+  - intent: saudacao
+    examples: |
+      - Olá
+      - Oi
+      - Bom dia
+      - Boa tarde
+      - Boa noite
+      - E aí
+      - Salve
+      - Posso te ajudar?
+      - Preciso de um favor
+      - Tenho uma pergunta
+      - Boa noite, tudo bem?
+      - Oi, tudo tranquilo?
+      - Boa tarde, como vai?
+      - E aí, beleza?
+      - Salve, tudo certo?
 
-- intent: goodbye
-  examples: |
-    - cu
-    - good by
-    - cee you later
-    - good night
-    - bye
-    - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - see you later
+  - intent: agendamento
+    examples: |
+      - Gostaria de agendar um horário
+      - Posso marcar um horário para hoje?
+      - Tenho interesse em agendar um serviço
+      - Gostaria de agendar um horário para amanhã
+      - Quero agendar um horário para um corte
+      - Tenho interesse em agendar um serviço para sábado
+      - Gostaria de marcar um corte para a próxima [segunda](dia_semana)
 
-- intent: affirm
-  examples: |
-    - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
-    - correct
+  - intent: agendamento_servico
+    examples: |
+      - Corte de [cabelo](servico)
+      - Quero marcar um [corte](servico)
+      - Corte de [cabelo e barba](servico)
+      - [barba](servico)
+      - [cabelo](servico)
 
-- intent: deny
-  examples: |
-    - no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
+  - intent: agendamento_data_hora
+    examples: |
+      - Proxima [terça](dia_semana), pela [manhã](periodo_agendamento)
+      - Na quinta-feira à tarde
+      - segunda feira à tarde
+      - No dia [27/10](data_hora) pela [manhã](periodo_agendamento)
+      - 12/06 - manhã
+      - 24/02, de manhã
+      - Amanhã de manhã
+      - Amanha a tarde
+      - na quinta feira
 
-- intent: mood_great
-  examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
+  - intent: agradecimento
+    examples: |
+      - Perfeito
+      - Muito bom
+      - Obrigado
+      - valeu
+      - vlw
+      - agradeço a ajuda
+      - Muito Obrigado pela ajuda
+      - obg
+      - você é top
+      - top
+      - agradeço
+      - show de bola
+      - massa
+      - grato
 
-- intent: mood_unhappy
-  examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
-
-- intent: bot_challenge
-  examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
+  - intent: finalizacao
+    examples: |
+      - Não, é só isso!
+      - não
+      - só isso mesmo
+      - Não, era apenas isso
+      - não, tudo bem
+      - Tudo certo
+      - Não, por enquanto é isso mesmo
+      - Somente isso
+      - Não preciso de mais nada
+      - Tudo bem!
+  - intent: endereco
+    examples: |
+      - Qual seu endereço?
+      - Onde vocês estão localizados?
+      - Onde é que vocês estão?
+      - Onde é a barbearia?
+      - Qual o endereço?
+      - Me informe o endereço
+      - Onde fica?
+      - Me informe o local da barbearia
+      - Qual local da barberia?
+      - Onde fica a barbearia?
+      - Como faço para chegar na barbearia?
+      - endereço
+      - Qual o cep da barberia?
+      - QUal a rua da barberia?
+      - Onde é que fica?
+      - Onde?
+      - local
+      - localização
+  - intent: valores
+    examples: |
+      - Quanto é o corte de cabelo?
+      - Quais os valores?
+      - Quanto custa o corte de cabelo?
+      - Qual preço da barba?
+      - Qual preço do corte de cabelo?
+      - Me informe valores
+      - quanto é?
+      - me diga o preço
+      - poderia me dizer o preço
+      - valores
+      - valores serviços
+      - me informe os preços
+      - quanto está o corte?
+      - quanto é a barba?
+      - me diga o valor da barba
+      - me informe o valor deste serviço?
+      - quanto é o custo?
+      - qual é o valor aqui?
+      - qual o valor?

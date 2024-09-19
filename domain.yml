@@ -1,33 +1,75 @@
 version: "3.1"
 
 intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
+  - saudacao
+  - agendamento
+  - agendamento_servico
+  - agendamento_data_hora
+  - agradecimento
+  - finalizacao
+  - valores
+  - endereco
+
+entities: 
+  - dia_semana
+  - periodo_agendamento
+  - data_hora
+  - servico
+
+slots: 
+  servico_agendamento:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: servico
+  periodo_agendamento_agenda:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: periodo_agendamento
+  data_hora_agenda:
+    type: text
+    influence_conversation: false
+    mappings: 
+    - type: from_entity
+      entity: data_hora
+    - type: from_entity
+      entity: dia_semana
 
 responses:
-  utter_greet:
-  - text: "Hey! How are you?"
+  utter_saudacao:
+  - text: "Olá! Bem-vindo a Barbearia Edinho's. Como posso ajudar?"
 
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
+  utter_agendamento:
+  - text: "Claro! Para podermos dar continuidade ao seu agendamento por favor informe o serviço desejado."
 
-  utter_did_that_help:
-  - text: "Did that help you?"
+  utter_agendamento_servico:
+  - text: "Entendido. Qual data e o periodo (manhã / tarde) que você prefere?"
 
-  utter_happy:
-  - text: "Great, carry on!"
+  utter_agendamento_data_hora:
+  - text: "Certo, seus dados foram salvos! {servico_agendamento} -  {data_hora_agenda} - {periodo_agendamento_agenda} Posso ajudar com mais alguma coisa?"
 
-  utter_goodbye:
-  - text: "Bye"
+  utter_agradecimento:
+  - text: "De nada! Ficamos a disposição!"
 
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+  utter_finalizacao:
+  - text: "Foi uma honra te atender! Até mais!!"
+
+  utter_endereco:
+  - text: "Estamos localizados na Rua Boa Vista 825 (Boa Vista), São Caetano do Sul, SP, 09572-300"
+
+  utter_valores:
+  - text: "
+  Nossos serviços são:\n
++-----------------------------+------------+--------------------------+\n
+| Serviço                     | Valor (R$) | Descrição                |\n
++-----------------------------+------------+--------------------------+\n
+| Corte de cabelo             |   25,00    | Corte de cabelo padrão   |\n
+| Barba                       |   20,00    | Aparar e modelar a barba |\n
+| Corte de cabelo + Barba     |   45,00    | Corte e barba juntos     |\n
++-----------------------------+------------+--------------------------+"
 
 session_config:
   session_expiration_time: 60

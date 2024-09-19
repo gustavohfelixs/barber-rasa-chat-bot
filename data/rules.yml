@@ -2,12 +2,15 @@ version: "3.1"
 
 rules:
 
-- rule: Say goodbye anytime the user says goodbye
+- rule: Agradecimento ao usuario
   steps:
-  - intent: goodbye
-  - action: utter_goodbye
-
-- rule: Say 'I am a bot' anytime the user challenges
+  - intent: agradecimento
+  - action: utter_agradecimento
+- rule: Informa endereco
   steps:
-  - intent: bot_challenge
-  - action: utter_iamabot
+  - intent: endereco
+  - action: utter_endereco
+- rule: Informa Valores
+  steps: 
+  - intent: valores
+  - action: utter_valores
