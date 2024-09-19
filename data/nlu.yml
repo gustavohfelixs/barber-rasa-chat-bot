@@ -38,6 +38,10 @@ nlu:
       - Boa tarde, como vai?
       - E aí, beleza?
       - Salve, tudo certo?
+      - Eai? Td bem?
+      - Como está?
+      - Opa, tudo bem?
+      - Oi, como vai?
 
   - intent: agendamento
     examples: |
@@ -48,6 +52,14 @@ nlu:
       - Quero agendar um horário para um corte
       - Tenho interesse em agendar um serviço para sábado
       - Gostaria de marcar um corte para a próxima [segunda](dia_semana)
+      - Queria agendar um horário de manhã
+      - Preciso marcar um corte para sexta-feira
+      - Dá para marcar um horário para o fim de semana?
+      - Consigo agendar para o próximo sábado?
+      - Quero agendar um corte para amanhã
+      - Pode marcar um horário para mim na terça-feira?
+      - Tenho como agendar uma barba para quinta-feira?
+      - Como faço para agendar um horário?
 
   - intent: agendamento_servico
     examples: |
@@ -56,10 +68,20 @@ nlu:
       - Corte de [cabelo e barba](servico)
       - [barba](servico)
       - [cabelo](servico)
+      - Quero fazer [barba](servico) e [cabelo](servico)
+      - Preciso agendar um [corte](servico)
+      - Vou precisar de um corte de [cabelo](servico)
+      - Preciso agendar para um [corte](servico)
+      - Gostaria de marcar um [corte](servico)
+      - Agendar para fazer a [barba](servico)
+      - Tenho como fazer [cabelo](servico) e [barba](servico)?
+      - Queria fazer só a [barba](servico)
+      - Posso agendar só para [barba](servico)?
+      - Queria marcar um [corte de cabelo](servico)
 
   - intent: agendamento_data_hora
     examples: |
-      - Proxima [terça](dia_semana), pela [manhã](periodo_agendamento)
+      - Próxima [terça](dia_semana), pela [manhã](periodo_agendamento)
       - Na quinta-feira à tarde
       - segunda feira à tarde
       - No dia [27/10](data_hora) pela [manhã](periodo_agendamento)
@@ -68,6 +90,12 @@ nlu:
       - Amanhã de manhã
       - Amanha a tarde
       - na quinta feira
+      - Na quarta à noite
+      - Amanhã no período da tarde
+      - Próximo sábado de manhã
+      - Pode ser na próxima segunda-feira à tarde?
+      - Quero agendar para o dia 15 de outubro à tarde
+      - Tem vaga amanhã pela manhã?
 
   - intent: agradecimento
     examples: |
@@ -85,6 +113,10 @@ nlu:
       - show de bola
       - massa
       - grato
+      - Muito grato
+      - Valeu pela atenção
+      - Agradeço muito
+      - Muitíssimo obrigado
 
   - intent: finalizacao
     examples: |
@@ -98,6 +130,13 @@ nlu:
       - Somente isso
       - Não preciso de mais nada
       - Tudo bem!
+      - Não, está tudo certo
+      - Nada mais, obrigado
+      - Por enquanto, é só isso
+      - Tudo ok por aqui
+      - Era só isso mesmo
+      - Não, já resolvi
+
   - intent: endereco
     examples: |
       - Qual seu endereço?
@@ -108,16 +147,17 @@ nlu:
       - Me informe o endereço
       - Onde fica?
       - Me informe o local da barbearia
-      - Qual local da barberia?
+      - Qual local da barbearia?
       - Onde fica a barbearia?
       - Como faço para chegar na barbearia?
       - endereço
-      - Qual o cep da barberia?
-      - QUal a rua da barberia?
+      - Qual o cep da barbearia?
+      - Qual a rua da barbearia?
       - Onde é que fica?
       - Onde?
       - local
       - localização
+
   - intent: valores
     examples: |
       - Quanto é o corte de cabelo?
@@ -139,3 +179,4 @@ nlu:
       - quanto é o custo?
       - qual é o valor aqui?
       - qual o valor?
+      - Pode me passar o preço?
