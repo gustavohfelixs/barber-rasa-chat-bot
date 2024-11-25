@@ -6,10 +6,17 @@ stories:
       - intent: saudacao
       - action: utter_saudacao
       - intent: agendamento
-      - action: utter_agendamento
-      - intent: agendamento_servico
-      - action: utter_agendamento_servico
-      - intent: agendamento_data_hora
+      - action: agendamento_form
+      - active_loop: agendamento_form
+      - slot_was_set:
+          - servico_agendamento: "corte de cabelo"
+          - data_hora_agenda: "quinta-feira"
+          - periodo_agendamento_agenda: "tarde"
+      - active_loop: null
       - action: utter_agendamento_data_hora
+      - action: action_confirmar_agendamento
+
+  - story: Finalização após agendamento
+    steps:
       - intent: finalizacao
       - action: utter_finalizacao

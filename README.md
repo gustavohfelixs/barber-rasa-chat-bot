@@ -72,3 +72,69 @@ Utilize o comando dentro da pasta do projeto.
 
 Use o comando
 `rasa shell` dentro da pasta do projeto.
+
+# Conectando ao Telegram
+
+Com esse modelo é possivel conectar ao telegram atravésd o adaptador `conexao_python_telegram.py` e obter esse tipo de dialogo
+![alt text](image.png)
+
+### Iniciando o rasa:
+
+Use o comando
+
+```
+rasa train --force
+```
+
+e
+
+```
+rasa run --enable-api --cors "*"  --debug
+```
+
+e ainda em outro terminal
+
+```
+rasa run actions
+```
+
+Tudo isso dentro da pasta do projeto e no perfil conda (barber-chatbot). Os comandos irão treinar o modelo e depois iniciar a aplicação e actions.
+
+### Iniciando o adaptador com Telegram
+
+Encontre o `BotFather` no Telegram e crie um novo bot através de
+
+```
+/start
+/newbot
+```
+
+![alt text](image-1.png)
+
+Copie o HTTP API token do seu bot e substitua no arquivo `conexao_python_telegram.py`
+
+e juntamente com o `ngrok` com
+
+```
+ngrok http 5005
+```
+
+pegue o ip do Forwading e substiuta no aruqivo também.
+![alt text](image-2.png)
+
+Obs: O Telegram requer url https então "http://localhost" não funciona.
+
+Agora basta enviar sua mensagem pelo telegram e terá resposta.
+
+## Adicionais Telegram
+
+Ao enviar uma imagem ou outro tipo de informação que não é do tipo texto o bot responde que ainda não sabe procesar:
+![alt text](<Imagem do WhatsApp de 2024-11-25 à(s) 13.24.20_77e2fe92.jpg>)
+
+### /start
+
+![alt text](<Imagem do WhatsApp de 2024-11-25 à(s) 13.23.51_3eaf4c20.jpg>)
+
+### /help
+
+![alt text](<Imagem do WhatsApp de 2024-11-25 à(s) 13.24.00_d566c2c4.jpg>)

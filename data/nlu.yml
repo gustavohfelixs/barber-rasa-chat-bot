@@ -21,6 +21,14 @@ nlu:
     examples: |
       - \d{2}/\d{2}
       - \d{2}/\{2}/\{2,4}
+  - intent: start
+    examples: |
+      - /start
+      - start
+  - intent: help
+    examples: |
+      - /help
+      - help
   - intent: saudacao
     examples: |
       - Olá

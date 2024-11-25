@@ -9,67 +9,98 @@ intents:
   - finalizacao
   - valores
   - endereco
+  - start
+  - help
 
-entities: 
+entities:
   - dia_semana
   - periodo_agendamento
   - data_hora
   - servico
 
-slots: 
+slots:
   servico_agendamento:
     type: text
     influence_conversation: false
     mappings:
-    - type: from_entity
-      entity: servico
+      - type: from_entity
+        entity: servico
   periodo_agendamento_agenda:
     type: text
     influence_conversation: false
     mappings:
-    - type: from_entity
-      entity: periodo_agendamento
+      - type: from_entity
+        entity: periodo_agendamento
   data_hora_agenda:
     type: text
     influence_conversation: false
-    mappings: 
-    - type: from_entity
-      entity: data_hora
-    - type: from_entity
-      entity: dia_semana
+    mappings:
+      - type: from_entity
+        entity: data_hora
+      - type: from_entity
+        entity: dia_semana
+
+forms:
+  agendamento_form:
+    required_slots:
+      - servico_agendamento
+      - data_hora_agenda
+      - periodo_agendamento_agenda
 
 responses:
   utter_saudacao:
-  - text: "Olá! Bem-vindo a Barbearia Edinho's. Como posso ajudar?"
+    - text: "Olá! Bem-vindo a Barbearia Edinho's. Como posso ajudar?"
 
   utter_agendamento:
-  - text: "Claro! Para podermos dar continuidade ao seu agendamento por favor informe o serviço desejado."
+    - text: "Claro! Para podermos dar continuidade ao seu agendamento por favor informe o serviço desejado."
 
   utter_agendamento_servico:
-  - text: "Entendido. Qual data e o periodo (manhã / tarde) que você prefere?"
+    - text: "Entendido. Qual data e o período (manhã / tarde) que você prefere?"
 
   utter_agendamento_data_hora:
-  - text: "Certo, seus dados foram salvos! {servico_agendamento} -  {data_hora_agenda} - {periodo_agendamento_agenda} Posso ajudar com mais alguma coisa?"
+    - text: "Certo, seus dados foram salvos! {servico_agendamento} - {data_hora_agenda} - {periodo_agendamento_agenda}. Posso ajudar com mais alguma coisa?"
 
   utter_agradecimento:
-  - text: "De nada! Ficamos a disposição!"
+    - text: "De nada! Ficamos à disposição!"
 
   utter_finalizacao:
-  - text: "Foi uma honra te atender! Até mais!!"
+    - text: "Foi uma honra te atender! Até mais!!"
 
   utter_endereco:
-  - text: "Estamos localizados na Rua Boa Vista 825 (Boa Vista), São Caetano do Sul, SP, 09572-300"
+    - text: "Estamos localizados na Rua Boa Vista 825 (Boa Vista), São Caetano do Sul, SP, 09572-300"
+
+  utter_ask_servico_agendamento:
+    - text: "Por favor, informe o serviço que você deseja (corte, barba, etc)."
+
+  utter_ask_data_hora_agenda:
+    - text: "Qual data você gostaria de agendar?"
+
+  utter_ask_periodo_agendamento_agenda:
+    - text: "Você prefere de manhã ou à tarde?"
+  
+  utter_help:
+    - text: "Eu sou um bot de atendimento  de  barbearia, posso te  ajudar com:
+  - saudacao
+  - agendamento
+  - agendamento_servico
+  - agendamento_data_hora
+  - agradecimento
+  - finalizacao
+  - valores
+  - endereco"
 
   utter_valores:
-  - text: "
-  Nossos serviços são:\n
-+-----------------------------+------------+--------------------------+\n
-| Serviço                     | Valor (R$) | Descrição                |\n
-+-----------------------------+------------+--------------------------+\n
-| Corte de cabelo             |   25,00    | Corte de cabelo padrão   |\n
-| Barba                       |   20,00    | Aparar e modelar a barba |\n
-| Corte de cabelo + Barba     |   45,00    | Corte e barba juntos     |\n
-+-----------------------------+------------+--------------------------+"
+    - text: |
+        Nossos serviços são:
+        +-----------------------------+------------+--------------------------+
+        | Serviço                     | Valor (R$) | Descrição                |
+        +-----------------------------+------------+--------------------------+
+        | Corte de cabelo             |   25,00    | Corte de cabelo padrão   |
+        | Barba                       |   20,00    | Aparar e modelar a barba |
+        | Corte de cabelo + Barba     |   45,00    | Corte e barba juntos     |
+        +-----------------------------+------------+--------------------------+
+actions:
+  - action_confirmar_agendamento
 
 session_config:
   session_expiration_time: 60

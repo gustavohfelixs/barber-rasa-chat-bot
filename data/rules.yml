@@ -1,16 +1,40 @@
 version: "3.1"
 
 rules:
+  - rule: Saudação Inicial
+    steps:
+      - intent: start
+      - action: utter_saudacao
+  - rule: Help
+    steps:
+      - intent: help
+      - action: utter_help
+  - rule: Agradecimento ao usuario
+    steps:
+      - intent: agradecimento
+      - action: utter_agradecimento
 
-- rule: Agradecimento ao usuario
-  steps:
-  - intent: agradecimento
-  - action: utter_agradecimento
-- rule: Informa endereco
-  steps:
-  - intent: endereco
-  - action: utter_endereco
-- rule: Informa Valores
-  steps: 
-  - intent: valores
-  - action: utter_valores
+  - rule: Informa endereco
+    steps:
+      - intent: endereco
+      - action: utter_endereco
+
+  - rule: Informa Valores
+    steps:
+      - intent: valores
+      - action: utter_valores
+
+  - rule: Ativar formulário de agendamento
+    steps:
+      - intent: agendamento
+      - action: agendamento_form
+      - active_loop: agendamento_form
+
+  - rule: Finalizar o formulário de agendamento
+    condition:
+      - active_loop: agendamento_form
+    steps:
+      - action: agendamento_form
+      - active_loop: null
+      - action: utter_agendamento_data_hora
+      - action: action_confirmar_agendamento
